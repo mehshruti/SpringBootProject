@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CustomUserService implements Userservice
@@ -14,7 +15,13 @@ public class CustomUserService implements Userservice
     UserREpository userRepository;
     @Override
     public List<User> getUser() {
+
         return this.userRepository.findAll();
+    }
+
+    @Override
+    public User getUserById(String UserId) {
+        return this.userRepository.findById(UserId).orElseThrow(null);
     }
 
 //    @Override
@@ -32,14 +39,12 @@ public class CustomUserService implements Userservice
 //            return null; // Or you can throw an exception or return a default user
 //        }
 //    }
-@Override    
-public Optional<User> getUserById(long userId) {
-    return userRepository.findById(Long.valueOf(userId));
-}
 
 
     @Override
     public User addUser(User user) {
+        String Userid = UUID.randomUUID().toString();
+        user.setId(Userid);
         return this.userRepository.save(user);
     }
 }

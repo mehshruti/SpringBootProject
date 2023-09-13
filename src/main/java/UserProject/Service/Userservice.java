@@ -11,7 +11,7 @@ public interface Userservice
     public List<User> getUser();
     //Get user by userId
 
-    public Optional<User> getUserById(long UserId);
+    public User getUserById(String UserId);
 
     //Add new User
     public User addUser(User user);
