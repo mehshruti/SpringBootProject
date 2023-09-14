@@ -23,7 +23,7 @@ public class UserController
         return this.userservice.getUserById(UserId);
     }
     @PostMapping("User")
-    public  String addUser(@RequestBody User user)
+    public  String adduser(@RequestBody User user)
     {
         this.userservice.addUser(user);
         return "User Created Successfully!";

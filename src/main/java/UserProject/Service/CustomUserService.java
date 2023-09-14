@@ -9,8 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class CustomUserService implements Userservice
-{
+public class CustomUserService implements Userservice {
     @Autowired
     UserREpository userRepository;
     @Override
@@ -21,6 +20,7 @@ public class CustomUserService implements Userservice
 
     @Override
     public User getUserById(String UserId) {
+
         return this.userRepository.findById(UserId).orElseThrow(null);
     }
 
@@ -42,9 +42,11 @@ public class CustomUserService implements Userservice
 
 
     @Override
-    public User addUser(User user) {
+    public User addUser(User user)
+    {
         String Userid = UUID.randomUUID().toString();
         user.setId(Userid);
         return this.userRepository.save(user);
     }
+
 }
